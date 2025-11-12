@@ -46,16 +46,18 @@ export class RateLimiter {
    * Get time until reset for a key
    */
   async getResetTime(key: string): Promise<number> {
+    const now = Date.now();
     const timestamps = this.requests.get(key) || [];
+    const validTimestamps = timestamps.filter((ts) => now - ts < this.window);
 
-    if (timestamps.length === 0) {
+    if (validTimestamps.length === 0) {
       return 0;
     }
 
-    const oldestTimestamp = Math.min(...timestamps);
+    const oldestTimestamp = Math.min(...validTimestamps);
     const resetTime = oldestTimestamp + this.window;
 
-    return Math.max(0, resetTime - Date.now());
+    return Math.max(0, resetTime - now);
   }
 
   /**
