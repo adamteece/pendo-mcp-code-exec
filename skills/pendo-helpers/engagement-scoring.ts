@@ -79,6 +79,8 @@ export async function calculateEngagementScores(config: {
     const recency = calculateRecency(account.metadata?.auto?.lastvisit);
 
     // Weighted score (0-100)
+    // The weights below are intentionally unbalanced to emphasize usage frequency (0.3) over breadth (0.25), depth (0.25), and recency (0.2).
+    // Adjust these weights if business priorities change or if empirical analysis suggests a different balance.
     const score =
       frequency * 0.3 + breadth * 0.25 + depth * 0.25 + recency * 0.2;
 
