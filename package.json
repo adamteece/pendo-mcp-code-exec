@@ -1,0 +1,41 @@
+{
+  "name": "pendo-mcp-code-execution",
+  "version": "1.0.0",
+  "description": "Transform Pendo MCP into a code-first API that reduces token usage by up to 98%",
+  "type": "module",
+  "main": "dist/server/index.js",
+  "bin": {
+    "pendo-mcp": "./dist/server/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/server/index.js",
+    "dev": "tsx watch src/server/index.ts",
+    "generate-wrappers": "tsx src/wrappers/generate-wrappers.ts",
+    "test": "vitest",
+    "prepare": "npm run build"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "pendo",
+    "code-execution",
+    "ai",
+    "claude"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.4",
+    "zod": "^3.22.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.3.3",
+    "tsx": "^4.7.0",
+    "vitest": "^1.2.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

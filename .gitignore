@@ -1,0 +1,9 @@
+node_modules/
+dist/
+cache/*
+!cache/.gitkeep
+*.log
+.env
+.DS_Store
+servers/pendo/*.ts
+servers/pendo/*.js
