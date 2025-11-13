@@ -27,7 +27,7 @@ class PendoMCPClient {
     this.transport = new StdioClientTransport({
       command: pendoMCPCommand,
       args: pendoMCPArgs,
-      env: process.env as Record<string, string>,
+      env: Object.fromEntries(Object.entries(process.env).filter(([_, v]) => v !== undefined)) as Record<string, string>,
     });
 
     // Create MCP client
