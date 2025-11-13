@@ -1,6 +1,5 @@
 import { Client } from '@modelcontextprotocol/sdk/client/index.js';
 import { StdioClientTransport } from '@modelcontextprotocol/sdk/client/stdio.js';
-import { spawn } from 'child_process';
 
 /**
  * Client for connecting to the actual Pendo MCP server
@@ -24,20 +23,11 @@ class PendoMCPClient {
       ? JSON.parse(process.env.PENDO_MCP_ARGS)
       : [];
 
-    // Spawn the Pendo MCP server process
-    const serverProcess = spawn(pendoMCPCommand, pendoMCPArgs, {
-      env: {
-        ...process.env,
-        PENDO_API_KEY: process.env.PENDO_API_KEY,
-        PENDO_SUBSCRIPTION_ID: process.env.PENDO_SUBSCRIPTION_ID,
-      },
-    });
-
-    // Create transport for communication
+    // Create transport for communication - it will spawn the process
     this.transport = new StdioClientTransport({
-      stdin: serverProcess.stdin,
-      stdout: serverProcess.stdout,
-      stderr: serverProcess.stderr,
+      command: pendoMCPCommand,
+      args: pendoMCPArgs,
+      env: Object.fromEntries(Object.entries(process.env).filter(([_, v]) => v !== undefined)) as Record<string, string>,
     });
 
     // Create MCP client
