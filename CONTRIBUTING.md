@@ -7,8 +7,8 @@ Thank you for your interest in contributing! This document provides guidelines f
 1. **Clone the repository**
 
 ```bash
-git clone https://github.com/your-org/pendo-mcp-code-execution.git
-cd pendo-mcp-code-execution
+git clone https://github.com/adamteece/pendo-mcp-code-exec.git
+cd pendo-mcp-code-exec
 ```
 
 2. **Install dependencies**
