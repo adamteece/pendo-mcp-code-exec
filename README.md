@@ -391,7 +391,7 @@ MIT
 ## Support
 
 For issues and questions:
-- GitHub Issues: [github.com/adamteece/pendo-mcp-code-execution/issues](https://github.com/adamteece/pendo-mcp-code-execution/issues)
+- GitHub Issues: [github.com/adamteece/pendo-mcp-code-exec/issues](https://github.com/adamteece/pendo-mcp-code-exec/issues)
 - Pendo Community: [community.pendo.io](https://community.pendo.io)
 
 ## Acknowledgments
