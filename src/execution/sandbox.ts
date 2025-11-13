@@ -173,7 +173,7 @@ const memoryBefore = process.memoryUsage().heapUsed;
   ): Promise<any> {
     return new Promise((resolve, reject) => {
       const worker = new Worker(scriptPath);
-      let timeoutHandle: NodeJS.Timeout;
+      let timeoutHandle: NodeJS.Timeout | undefined;
 
       // Set up timeout
       if (options.timeout) {

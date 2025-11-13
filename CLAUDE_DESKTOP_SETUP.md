@@ -2,21 +2,18 @@
 
 This guide will help you configure Pendo MCP Code Execution with Claude Desktop.
 
-## Step 1: Install Dependencies
+## Step 1: Install from Source
 
-First, make sure you have Node.js 18+ installed, then install the package:
-
-```bash
-npm install -g pendo-mcp-code-execution
-```
-
-Or if you're running from source:
+First, make sure you have Node.js 18+ installed, then clone and build the project:
 
 ```bash
-cd pendo-mcp-code-execution
+git clone https://github.com/adamteece/pendo-mcp-code-exec.git
+cd pendo-mcp-code-exec
 npm install
 npm run build
 ```
+
+> **Note**: This package is not yet published to npm. You must install from source.
 
 ## Step 2: Get Pendo Credentials
 
@@ -41,7 +38,7 @@ open ~/Library/Application\ Support/Claude/claude_desktop_config.json
   "mcpServers": {
     "pendo-code-execution": {
       "command": "node",
-      "args": ["/path/to/pendo-mcp-code-execution/dist/server/index.js"],
+      "args": ["/absolute/path/to/pendo-mcp-code-exec/dist/server/index.js"],
       "env": {
         "PENDO_API_KEY": "your-api-key-here",
         "PENDO_SUBSCRIPTION_ID": "your-subscription-id",
@@ -52,6 +49,8 @@ open ~/Library/Application\ Support/Claude/claude_desktop_config.json
   }
 }
 ```
+
+> **Important**: Replace `/absolute/path/to/pendo-mcp-code-exec` with the actual absolute path where you cloned the repository (e.g., `/Users/yourname/projects/pendo-mcp-code-exec`).
 
 ### Windows
 
@@ -68,7 +67,7 @@ open ~/Library/Application\ Support/Claude/claude_desktop_config.json
   "mcpServers": {
     "pendo-code-execution": {
       "command": "node",
-      "args": ["C:\\path\\to\\pendo-mcp-code-execution\\dist\\server\\index.js"],
+      "args": ["C:\\absolute\\path\\to\\pendo-mcp-code-exec\\dist\\server\\index.js"],
       "env": {
         "PENDO_API_KEY": "your-api-key-here",
         "PENDO_SUBSCRIPTION_ID": "your-subscription-id",
@@ -79,6 +78,8 @@ open ~/Library/Application\ Support/Claude/claude_desktop_config.json
   }
 }
 ```
+
+> **Important**: Replace `C:\absolute\path\to\pendo-mcp-code-exec` with the actual absolute path where you cloned the repository.
 
 ### Linux
 
@@ -95,11 +96,13 @@ open ~/Library/Application\ Support/Claude/claude_desktop_config.json
 Before using the server, generate the TypeScript wrappers:
 
 ```bash
-cd /path/to/pendo-mcp-code-execution
+cd pendo-mcp-code-exec
 npm run generate-wrappers
 ```
 
 This will create wrapper files in `servers/pendo/` for all Pendo tools.
+
+> **Note**: You must have the actual Pendo MCP server installed and configured for this step to work. The wrapper generator connects to your Pendo MCP server to introspect the available tools.
 
 ## Step 5: Restart Claude Desktop
 

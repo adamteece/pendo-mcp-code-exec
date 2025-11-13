@@ -7,3 +7,4 @@ cache/*
 .DS_Store
 servers/pendo/*.ts
 servers/pendo/*.js
+package-lock.json

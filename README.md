@@ -31,18 +31,16 @@ Instead of exposing Pendo tools directly to AI agents, this MCP server provides 
 
 ## Installation
 
-```bash
-npm install pendo-mcp-code-execution
-```
-
-Or install from source:
+### Install from Source
 
 ```bash
-git clone https://github.com/your-org/pendo-mcp-code-execution.git
-cd pendo-mcp-code-execution
+git clone https://github.com/adamteece/pendo-mcp-code-exec.git
+cd pendo-mcp-code-exec
 npm install
 npm run build
 ```
+
+> **Note**: This package is not yet published to npm. Install from source as shown above.
 
 ## Configuration
 
@@ -54,8 +52,8 @@ Add this to your Claude Desktop configuration (`~/Library/Application Support/Cl
 {
   "mcpServers": {
     "pendo-code-execution": {
-      "command": "npx",
-      "args": ["pendo-mcp-code-execution"],
+      "command": "node",
+      "args": ["/absolute/path/to/pendo-mcp-code-exec/dist/server/index.js"],
       "env": {
         "PENDO_API_KEY": "your-api-key-here",
         "PENDO_SUBSCRIPTION_ID": "your-sub-id",
@@ -66,6 +64,8 @@ Add this to your Claude Desktop configuration (`~/Library/Application Support/Cl
   }
 }
 ```
+
+> **Important**: Replace `/absolute/path/to/pendo-mcp-code-exec` with the actual absolute path where you cloned the repository.
 
 ### Environment Variables
 
